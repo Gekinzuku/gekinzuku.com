@@ -22,10 +22,10 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - name: Install dependencies
-        run: npm ci
+            #- name: Install dependencies
+            #run: npm ci
       - name: Build
-        run: npm run build # Or your specific build command
+        run: ls #npm run build # Or your specific build command
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
