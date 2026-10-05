@@ -27,7 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 0, 127, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
@@ -42,7 +42,7 @@ body {
   height: 100vh;
   pointer-events: none;
   background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
+    rgba(18, 16, 16, 0) 50%,
     rgba(0, 0, 0, 0.25) 50%
   );
   background-size: 100% 4px;
@@ -100,7 +100,8 @@ body {
   box-shadow: 0 0 5px var(--neon-cyan);
 }
 
-.nav-btn:hover, .nav-btn.active {
+.nav-btn:hover,
+.nav-btn.active {
   background: var(--neon-cyan);
   color: var(--bg-color);
   box-shadow: 0 0 15px var(--neon-cyan);
@@ -296,6 +297,57 @@ code {
   border-radius: 3px;
 }
 
+/* Project Directory Cards (Svelte addition, same theme) */
+.project-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(0, 243, 255, 0.04);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 6px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 8px rgba(0, 243, 255, 0.25);
+  transition: all 0.2s ease;
+}
+
+.project-card:last-child {
+  margin-bottom: 0;
+}
+
+.project-card:hover {
+  background: rgba(0, 243, 255, 0.12);
+  box-shadow: 0 0 22px var(--neon-cyan);
+  transform: translateX(4px);
+}
+
+.project-card h3 {
+  font-family: var(--font-retro);
+  font-size: 0.9rem;
+  color: #fff;
+  text-shadow: 0 0 6px var(--neon-pink);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.project-card p {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-card .card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-card .card-meta .tag {
+  margin: 0;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+}
+
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
@@ -323,5 +375,11 @@ code {
   .cyber-btn {
     width: 100%;
     text-align: center;
+  }
+  .card-body {
+    padding: 1.4rem;
+  }
+  .project-card:hover {
+    transform: none;
   }
 }
