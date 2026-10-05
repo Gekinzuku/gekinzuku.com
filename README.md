@@ -17,7 +17,17 @@ Then open the URL Vite prints (defaults to http://localhost:5173).
 
 ```bash
 npm run build      # production bundle -> dist/
-npm run preview    # serve the production build locally
+```
+
+Because the project uses `vite-plugin-singlefile`, the build produces a single
+self-contained `dist/index.html` with all CSS and JS inlined. You can open it
+directly in a browser via `file://` (just double-click it).
+
+If you'd rather serve it over HTTP (recommended for anything you actually
+deploy), use:
+
+```bash
+npm run preview    # serves the dist/ folder on http://localhost:4173
 ```
 
 ## Routes
@@ -96,3 +106,17 @@ All colors and fonts are CSS custom properties at the top of `src/app.css`:
 ```
 
 Change them once and the whole site follows.
+
+## Troubleshooting: blank screen after `npm run build`
+
+If you ever see a blank page after building, the cause is almost always one
+of these two `file://` limitations:
+
+1. **Absolute asset paths.** Vite defaults to `/assets/...` which, on
+   `file://`, resolves to your filesystem root. Fixed by `base: './'`.
+2. **CORS on ES modules.** Browsers refuse to load external
+   `<script type="module" src="file://...">`. Fixed by `vite-plugin-singlefile`
+   inlining everything into `index.html`.
+
+Both fixes are already in `vite.config.js`. If you remove them, the built site
+will still work fine when served over HTTP (e.g. `npm run preview`).
